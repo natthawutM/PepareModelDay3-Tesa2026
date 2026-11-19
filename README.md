@@ -73,6 +73,28 @@ python benchmark_all.py --split test --model A0 --watershed outputs_day3_tune/A0
 python benchmark_all.py --split test --model yolo_640_int8 --confidence 0.175
 ```
 
+### ทดสอบ Day 3 triangle 5 ภาพที่แนบใน repo
+
+ชุด `datasets/day3_triangle/valid/` มีภาพ Mixed_triangle1–5 และเฉลย `_annotations.coco.json` รวม 30 เมล็ด แยกจาก Valid เดิม 33 ภาพ ใช้ทดสอบบน Pi ได้หลัง `git pull` โดยไม่ต้องคัดลอกชุดข้อมูลจาก Windows เพิ่ม
+
+รันจากโฟลเดอร์ repo เพื่อเทียบภาพเต็มกับ ROI ขอบ 50%:
+
+```bash
+python benchmark_all.py --split valid --model A0_classifier_day3 \
+  --compare-roi 0.50 --data-root datasets/day3_triangle \
+  --out outputs_roi_day3_pi
+cat outputs_roi_day3_pi/comparison.csv
+```
+
+ถ้าต้องการรันเฉพาะภาพเต็ม:
+
+```bash
+python benchmark_all.py --split valid --model A0_classifier_day3 \
+  --data-root datasets/day3_triangle --out outputs_day3_triangle_pi
+```
+
+ชุดนี้ใช้เลือกค่าระหว่างทดลองแล้ว และยังไม่ยืนยันว่าเมล็ดจริงซ้ำกับภาพ grid/square ใน Train หรือไม่ จึงใช้เปรียบเทียบการทดลองบนภาพชุดเดียวกัน ส่วนการยืนยันผลสุดท้ายควรใช้ภาพที่กันไว้ใหม่
+
 ### รายการรุ่นและคำสั่งทั่วไป
 
 `A0_classifier_refined` ใช้ตัวแยกเมล็ด A0 และ watershed `0.425/20` พร้อม classifier ที่ fine-tune จากภาพเมล็ดใน Train สำหรับเทียบความถูกต้องของคลาสกับ A0 เดิม ใช้ไฟล์ watershed ของ A0 รอบ refine เพื่อให้ทั้งคู่ใช้พารามิเตอร์เดียวกัน
