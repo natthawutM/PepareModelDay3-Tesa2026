@@ -12,13 +12,13 @@ from time import perf_counter
 ROOT = Path(__file__).resolve().parent
 
 
-def evaluate(output, split="test"):
+def evaluate(output, split="test", data_root=ROOT):
     import cv2
     import numpy as np
     from data import Coco
     from post import match
 
-    dataset = Coco(ROOT, split)
+    dataset = Coco(data_root, split)
     payload = json.loads((output / "predictions.json").read_text(encoding="utf-8"))
     by_name = {record["image_name"]: record["objects"] for record in payload}
     if len(payload) != len(dataset.images) or set(by_name) != {i["file_name"] for i in dataset.images}:
@@ -76,17 +76,24 @@ def evaluate(output, split="test"):
     }
 
 
-def run(weights, output, split="test", threads=4, log=None):
-    cmd = [sys.executable, str(ROOT / "infer.py"), "--input", str(ROOT / split),
+def run(weights, output, split="test", threads=4, log=None, confidence=None,
+        *, data_root=ROOT, watershed=None):
+    cmd = [sys.executable, str(ROOT / "infer.py"), "--input", str(data_root / split),
            "--weights", str(weights), "--out", str(output), "--threads", str(threads)]
+    if confidence is not None:
+        cmd.extend(("--confidence", str(confidence)))
+    if watershed is not None:
+        cmd.extend(("--watershed", str(watershed)))
     env = dict(os.environ, YOLO_OFFLINE="true", YOLO_AUTOINSTALL="false",
                OMP_NUM_THREADS=str(threads), MKL_NUM_THREADS=str(threads))
     start = perf_counter()
     subprocess.run(cmd, check=True, env=env, stdout=log,
                    stderr=subprocess.STDOUT if log is not None else None)
     elapsed = perf_counter() - start
-    report = evaluate(output, split)
-    report.update(platform=platform.platform(), split=split, threads=threads, total_seconds=elapsed,
+    report = evaluate(output, split, data_root)
+    benchmark = json.loads((output / "benchmark.json").read_text(encoding="utf-8"))
+    report.update(platform=platform.platform(), split=split, threads=threads, confidence_override=confidence,
+                  median_seconds_per_image=benchmark["median_seconds"], total_seconds=elapsed,
                   end_to_end_seconds_per_image=elapsed / report["images"])
     (output / "metrics.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     return report

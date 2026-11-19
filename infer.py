@@ -18,10 +18,18 @@ IMAGE_TYPES = {'.jpg', '.jpeg', '.png'}
 
 
 class Predictor:
-    def __init__(self, weights, variant, threads):
+    def __init__(self, weights, variant, threads, confidence=None, watershed=None):
         self.weights = Path(weights)
         self.manifest = json.loads((self.weights / 'manifest.json').read_text())
         self.variant = self.manifest['variants'][variant]
+        if confidence is not None:
+            if self.manifest.get('family') != 'yolo' or not 0 <= confidence <= 1:
+                raise ValueError('Confidence must be between 0 and 1 for a YOLO model')
+            self.manifest['settings']['conf'] = confidence
+        if watershed is not None:
+            if self.manifest.get('family') != 'unet':
+                raise ValueError('Watershed overrides require a U-Net model')
+            self.manifest['watershed'].update(watershed)
         if self.manifest.get('family') == 'yolo':
             from ultralytics import YOLO
             self.yolo = YOLO(self.weights / self.variant['file'], task='segment')
@@ -213,7 +221,8 @@ def main(args):
         raise SystemExit('Input image stems must be unique')
     for folder in ('seg_mask', 'vis'):
         (args.out / folder).mkdir(parents=True, exist_ok=True)
-    predictor = Predictor(args.weights, args.variant, args.threads)
+    watershed = json.loads(args.watershed.read_text(encoding='utf-8')) if args.watershed else None
+    predictor = Predictor(args.weights, args.variant, args.threads, args.confidence, watershed)
     for i in range(args.warmup):
         run_one(predictor, files[i % len(files)], args.out, vis_max_side)
     rows, seconds = [], []
@@ -246,6 +255,8 @@ if __name__ == '__main__':
     parser.add_argument('--out', required=True, type=Path)
     parser.add_argument('--variant', default='selected')
     parser.add_argument('--threads', type=int, default=4)
+    parser.add_argument('--confidence', type=float, help='Override the YOLO confidence threshold')
+    parser.add_argument('--watershed', type=Path, help='JSON file overriding U-Net watershed parameters')
     parser.add_argument('--warmup', type=int, default=0)
     parser.add_argument('--vis-max-side', type=int, default=1280, help='Limit overlay size only (0 for full resolution)')
     main(parser.parse_args())
