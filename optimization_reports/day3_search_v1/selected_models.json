@@ -1,0 +1,116 @@
+{
+  "accuracy": {
+    "selected_trial": "round3_min_marker_22",
+    "settings": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "sha256": {
+      "classifier.onnx": "cb003637e9d18e650c92aa574a935405a0ef6a4fdefb64a22ca0b2e0ef0efb6c",
+      "manifest.json": "1f3e5addf81cac2552cc9ccb1f7240cccd564337dcac0c41a9f7ef04c3733914",
+      "model.onnx": "6fde18cc2cef1fadec76ee6ab03ed9f05e4e0dab47d7de8eff3591db246dba24"
+    }
+  },
+  "balanced": {
+    "selected_trial": "round1_min_marker_16",
+    "settings": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.375,
+        "min_area": 12,
+        "min_marker": 16
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "sha256": {
+      "classifier.onnx": "cb003637e9d18e650c92aa574a935405a0ef6a4fdefb64a22ca0b2e0ef0efb6c",
+      "manifest.json": "55d28c989a9e99cae8ca412ec6301266da9dc52ca2a99926639d85f9fa4eaeae",
+      "model.onnx": "6fde18cc2cef1fadec76ee6ab03ed9f05e4e0dab47d7de8eff3591db246dba24"
+    }
+  },
+  "speed": {
+    "selected_trial": "fast_round3_min_marker_13",
+    "settings": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.275,
+        "min_area": 4,
+        "min_marker": 13
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "sha256": {
+      "classifier.onnx": "cb003637e9d18e650c92aa574a935405a0ef6a4fdefb64a22ca0b2e0ef0efb6c",
+      "manifest.json": "1d98ab24715e5b19640e2b0afa9f14bf2ba35314372b8151b6bce7043f3905fe",
+      "model.onnx": "cc52df6d20b70c7aff4e05cc4c53d075f5c444a673e9f0a91d15f91d7d87815f"
+    }
+  }
+}

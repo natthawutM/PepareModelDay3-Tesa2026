@@ -1,0 +1,32 @@
+{
+  "family": "unet",
+  "classes": [
+    "black",
+    "broken",
+    "good",
+    "husk",
+    "immature",
+    "parchment",
+    "shell"
+  ],
+  "classifier": "classifier.onnx",
+  "classifier_size": 96,
+  "classifier_preprocessing": {
+    "mode": "letterbox",
+    "masked": true
+  },
+  "watershed": {
+    "foreground": 0.4,
+    "boundary": 0.3,
+    "min_area": 8,
+    "min_marker": 22,
+    "border_strip_span": 0.7,
+    "border_strip_depth": 0.2
+  },
+  "variants": {
+    "selected": {
+      "file": "model.onnx",
+      "size": 512
+    }
+  }
+}

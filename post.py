@@ -13,6 +13,18 @@ def instances_from_logits(logits, box, shape, settings, debug=False):
     count, components, stats, _ = cv2.connectedComponentsWithStats(fg, connectivity=8)
     allowed = stats[:, cv2.CC_STAT_AREA] >= settings['min_area']
     allowed[0] = False
+    # Optional rejection of broad, shallow foreground strips at image borders
+    # (e.g. exposed tabletop beyond the paper). Never infer an expected count.
+    strip_span = settings.get('border_strip_span', 0)
+    if strip_span:
+        strip_depth = settings.get('border_strip_depth', .2)
+        fh, fw = fg.shape
+        for component in range(1, count):
+            left, top, width, height, _ = stats[component]
+            horizontal = (top == 0 or top + height == fh) and width >= strip_span*fw and height <= strip_depth*fh
+            vertical = (left == 0 or left + width == fw) and height >= strip_span*fh and width <= strip_depth*fw
+            if horizontal or vertical:
+                allowed[component] = False
     fg = allowed[components]
     dist = cv2.distanceTransform(np.pad(fg.astype(np.uint8), 1), cv2.DIST_L2, 5)[1:-1, 1:-1]
     core = (fg & (boundary < settings['boundary'])).astype(np.uint8)
@@ -50,14 +62,19 @@ def instances_from_logits(logits, box, shape, settings, debug=False):
         filtered_fg = fg & np.isin(components, np.unique(components[filtered > 0]))
         labels = watershed(elevation, filtered, mask=filtered_fg, connectivity=2)
         markers = filtered
-    restored = cv2.resize(labels.astype(np.float32), (shape[1], shape[0]),
-                          interpolation=cv2.INTER_NEAREST).astype(np.int32)
-    present = np.unique(restored[restored > 0])
+    # Compact IDs before upscaling: scanning a 12 MP restored mask is expensive
+    # on the Pi. Nearest-neighbour upscaling preserves every source label.
+    upscaling = shape[0] >= labels.shape[0] and shape[1] >= labels.shape[1]
+    source = labels if upscaling else cv2.resize(
+        labels.astype(np.float32), (shape[1], shape[0]), interpolation=cv2.INTER_NEAREST).astype(np.int32)
+    present = np.unique(source[source > 0])
     if len(present) > np.iinfo(np.uint16).max:
         raise ValueError('Too many instances for a 16-bit ID mask')
-    lookup = np.zeros(int(restored.max()) + 1, np.uint16)
+    lookup = np.zeros(int(source.max()) + 1, np.uint16)
     lookup[present] = np.arange(1, len(present) + 1, dtype=np.uint16)
-    output = lookup[restored]
+    output = lookup[source]
+    if upscaling:
+        output = cv2.resize(output, (shape[1], shape[0]), interpolation=cv2.INTER_NEAREST)
     if debug:
         return output, {'foreground_probability': fg_prob, 'foreground': fg,
                         'boundary': boundary, 'markers': markers,

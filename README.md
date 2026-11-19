@@ -95,6 +95,31 @@ python benchmark_all.py --split valid --model A0_classifier_day3 \
 
 ชุดนี้ใช้เลือกค่าระหว่างทดลองแล้ว และยังไม่ยืนยันว่าเมล็ดจริงซ้ำกับภาพ grid/square ใน Train หรือไม่ จึงใช้เปรียบเทียบการทดลองบนภาพชุดเดียวกัน ส่วนการยืนยันผลสุดท้ายควรใช้ภาพที่กันไว้ใหม่
 
+### รุ่นทดลองลดเวลาและเพิ่ม IoU / Counting ของ Day 3
+
+รอบค้นหานี้เว้นการจูน classifier ตามที่กำหนด ใช้ Valid เดิม 33 ภาพและ Day 3 triangle 5 ภาพสำหรับเลือกค่า ไม่ใช้ Test สำหรับค้นหา เปรียบเทียบ watershed, ROI, fine-tune decoder, ความละเอียด และ INT8 แบบเลือกชั้น ผล Windows และเงื่อนไขหยุดเมื่อคะแนนเริ่มคงที่อยู่ใน `optimization_reports/day3_search_v1/REPORT.md`
+
+- `A0_day3_search_accuracy`: รุ่นที่ IoU/Counting รวมดีที่สุดในรอบค้นหา
+- `A0_day3_border_refined`: รุ่นต่อจาก accuracy ที่กรองแถบพื้นหลังยาวและตื้นซึ่งติดขอบภาพ ได้ triangle IoU 90.84% และ Counting 100% ในรอบวัดซ้ำ ดู `optimization_reports/day3_border_v2/REPORT.md` ก่อนใช้กับภาพใหม่
+- `A0_day3_search_balanced`: รุ่นใกล้คะแนนสูงสุดที่คัดด้วยเวลาในช่วงค้นหา
+- `A0_day3_search_speed`: รุ่นเร็วที่ยอมแลกความแม่นบางส่วน โดยจำกัดการลดของ IoU และ Counting แต่ละชุดไม่เกิน 2 จุดเปอร์เซ็นต์จาก baseline
+
+หลัง commit/push และ `git pull` บน Pi ให้ยืนยันผลบนบอร์ดจริงด้วย:
+
+```bash
+python benchmark_all.py --split valid \
+  --model A0_classifier_day3 A0_day3_search_accuracy A0_day3_border_refined A0_day3_search_speed \
+  --data-root datasets/day3_triangle --out outputs_day3_search_triangle_pi
+
+python benchmark_all.py --split valid \
+  --model A0_classifier_day3 A0_day3_search_accuracy A0_day3_border_refined A0_day3_search_speed \
+  --out outputs_day3_search_legacy_pi
+```
+
+เวลา Windows ใช้จัดอันดับบน Pi ไม่ได้ รุ่นเหล่านี้ยังไม่ยืนยันเกณฑ์ไม่เกิน 1 วินาทีบน Pi คอลัมน์ `day3_performance_out_of_30` ใน benchmark เป็นสูตร IoU + Counting เดิม ไม่ใช่คะแนนรวมจากตาราง Day 3 ล่าสุด ส่วนรายงานรอบนี้ใช้คะแนนชั่วคราว `7.5 × IoU + 7.5 × Counting` เพื่อคัดรุ่นเท่านั้น ไม่รวม Classification, Latency ranking หรือ MQTT
+
+สคริปต์ทดลองบน Windows: `optimize_day3.py`, `optimize_day3_speed.py`, `optimize_day3_lowres.py` และ `benchmark_day3_final.py` ต้องใช้ environment ฝึกเดิม รวมถึง `../overnight_01/src` และชุด Train ที่ระบุใน arguments การรัน benchmark บน Pi ใช้เพียงโมเดลและชุด Valid ที่แนบใน repo
+
 ### รายการรุ่นและคำสั่งทั่วไป
 
 `A0_classifier_refined` ใช้ตัวแยกเมล็ด A0 และ watershed `0.425/20` พร้อม classifier ที่ fine-tune จากภาพเมล็ดใน Train สำหรับเทียบความถูกต้องของคลาสกับ A0 เดิม ใช้ไฟล์ watershed ของ A0 รอบ refine เพื่อให้ทั้งคู่ใช้พารามิเตอร์เดียวกัน

@@ -1,0 +1,3668 @@
+[
+  {
+    "name": "baseline_full",
+    "selection_proxy_out_of_15": 13.159586169122838,
+    "windows_warm_compute_max_group_median_s": 0.06586650002282113,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7785499278711958,
+        "counting": 0.9480177293678437,
+        "warm_compute_median_s": 0.03190950001589954,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.849321987860384,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.06586650002282113,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "roi_0.15_locator_0",
+    "selection_proxy_out_of_15": 13.089655217333576,
+    "windows_warm_compute_max_group_median_s": 0.11578619992360473,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7592856837041291,
+        "counting": 0.9397810339041877,
+        "warm_compute_median_s": 0.062002699938602746,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8700794355853988,
+        "counting": 0.9214285714285715,
+        "warm_compute_median_s": 0.11578619992360473,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      },
+      "roi_margin": 0.15,
+      "roi_locator_side": 0
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "roi_0.15_locator_512",
+    "selection_proxy_out_of_15": 13.089655217333576,
+    "windows_warm_compute_max_group_median_s": 0.09797900007106364,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7592856837041291,
+        "counting": 0.9397810339041877,
+        "warm_compute_median_s": 0.06278530007693917,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8700794355853988,
+        "counting": 0.9214285714285715,
+        "warm_compute_median_s": 0.09797900007106364,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      },
+      "roi_margin": 0.15,
+      "roi_locator_side": 512
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "roi_0.3_locator_0",
+    "selection_proxy_out_of_15": 12.648110035270218,
+    "windows_warm_compute_max_group_median_s": 0.1178762000054121,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7164181245152114,
+        "counting": 0.9035091398519732,
+        "warm_compute_median_s": 0.06497149995993823,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8481401736096352,
+        "counting": 0.9047619047619048,
+        "warm_compute_median_s": 0.1178762000054121,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      },
+      "roi_margin": 0.3,
+      "roi_locator_side": 0
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "roi_0.3_locator_512",
+    "selection_proxy_out_of_15": 12.648110035270218,
+    "windows_warm_compute_max_group_median_s": 0.10756110004149377,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7164181245152114,
+        "counting": 0.9035091398519732,
+        "warm_compute_median_s": 0.062263900064863265,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8481401736096352,
+        "counting": 0.9047619047619048,
+        "warm_compute_median_s": 0.10756110004149377,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      },
+      "roi_margin": 0.3,
+      "roi_locator_side": 512
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "roi_0.5_locator_0",
+    "selection_proxy_out_of_15": 12.77876400091889,
+    "windows_warm_compute_max_group_median_s": 0.12012570002116263,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7148850124880087,
+        "counting": 0.8862660706066157,
+        "warm_compute_median_s": 0.06127920001745224,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8731859838170802,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.12012570002116263,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      },
+      "roi_margin": 0.5,
+      "roi_locator_side": 0
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "roi_0.5_locator_512",
+    "selection_proxy_out_of_15": 12.77876400091889,
+    "windows_warm_compute_max_group_median_s": 0.10549149999860674,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7148850124880087,
+        "counting": 0.8862660706066157,
+        "warm_compute_median_s": 0.062228000024333596,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8731859838170802,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.10549149999860674,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      },
+      "roi_margin": 0.5,
+      "roi_locator_side": 512
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_foreground_0.45",
+    "selection_proxy_out_of_15": 13.43514541877247,
+    "windows_warm_compute_max_group_median_s": 0.07439850002992898,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7800154022705413,
+        "counting": 0.9480177293678437,
+        "warm_compute_median_s": 0.0338192000053823,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07439850002992898,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_foreground_0.55",
+    "selection_proxy_out_of_15": 13.144495387470872,
+    "windows_warm_compute_max_group_median_s": 0.06557679991237819,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7760368056224929,
+        "counting": 0.946864896693272,
+        "warm_compute_median_s": 0.03236439998727292,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8489637343431344,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.06557679991237819,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.55,
+        "boundary": 0.425,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_boundary_0.375",
+    "selection_proxy_out_of_15": 13.453991047249099,
+    "windows_warm_compute_max_group_median_s": 0.07264530006796122,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7837233801409892,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03374099999200553,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07264530006796122,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.375,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_boundary_0.475",
+    "selection_proxy_out_of_15": 13.382168523623122,
+    "windows_warm_compute_max_group_median_s": 0.07709759997669607,
+    "metrics": {
+      "legacy": {
+        "iou": 0.773098009179625,
+        "counting": 0.9408079504189344,
+        "warm_compute_median_s": 0.03319700004067272,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07709759997669607,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.475,
+        "min_area": 12,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_min_marker_16",
+    "selection_proxy_out_of_15": 13.438012008495406,
+    "windows_warm_compute_max_group_median_s": 0.06518630008213222,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7804072363430018,
+        "counting": 0.9483903192214996,
+        "warm_compute_median_s": 0.03344420006033033,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06518630008213222,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.375,
+        "min_area": 12,
+        "min_marker": 16
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_min_marker_24",
+    "selection_proxy_out_of_15": 13.454072126292164,
+    "windows_warm_compute_max_group_median_s": 0.0783124000299722,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7837450012191397,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03375840000808239,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.0783124000299722,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.375,
+        "min_area": 12,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_min_area_8",
+    "selection_proxy_out_of_15": 13.454072126292164,
+    "windows_warm_compute_max_group_median_s": 0.06947109999600798,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7837450012191397,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03325320000294596,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06947109999600798,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.375,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round1_min_area_16",
+    "selection_proxy_out_of_15": 13.454072126292164,
+    "windows_warm_compute_max_group_median_s": 0.08014219999313354,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7837450012191397,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03494530008174479,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8832437419390352,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.08014219999313354,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.375,
+        "min_area": 16,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_foreground_0.4",
+    "selection_proxy_out_of_15": 13.45666206173912,
+    "windows_warm_compute_max_group_median_s": 0.06856710009742528,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7848239656112288,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03231099992990494,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06856710009742528,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.375,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_foreground_0.5",
+    "selection_proxy_out_of_15": 13.178452406584903,
+    "windows_warm_compute_max_group_median_s": 0.07926419994328171,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7822634014710927,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03164000005926937,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.849321987860384,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.07926419994328171,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.5,
+        "boundary": 0.375,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_boundary_0.325",
+    "selection_proxy_out_of_15": 13.474103869035854,
+    "windows_warm_compute_max_group_median_s": 0.06556600006297231,
+    "metrics": {
+      "legacy": {
+        "iou": 0.787310612059189,
+        "counting": 0.9514997545889994,
+        "warm_compute_median_s": 0.03277319995686412,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06556600006297231,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.325,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_boundary_0.425",
+    "selection_proxy_out_of_15": 13.437738531663703,
+    "windows_warm_compute_max_group_median_s": 0.06701529992278665,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7810952139811043,
+        "counting": 0.9480177293678437,
+        "warm_compute_median_s": 0.033274399931542575,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06701529992278665,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.425,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_min_marker_20",
+    "selection_proxy_out_of_15": 13.452541921168041,
+    "windows_warm_compute_max_group_median_s": 0.07201720005832613,
+    "metrics": {
+      "legacy": {
+        "iou": 0.784591062324742,
+        "counting": 0.9484694515586963,
+        "warm_compute_median_s": 0.031727699912153184,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07201720005832613,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.325,
+        "min_area": 8,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_min_marker_28",
+    "selection_proxy_out_of_15": 13.474103869035854,
+    "windows_warm_compute_max_group_median_s": 0.0727445000084117,
+    "metrics": {
+      "legacy": {
+        "iou": 0.787310612059189,
+        "counting": 0.9514997545889994,
+        "warm_compute_median_s": 0.03198390000034124,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.0727445000084117,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.325,
+        "min_area": 8,
+        "min_marker": 28
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_min_area_4",
+    "selection_proxy_out_of_15": 13.474103869035854,
+    "windows_warm_compute_max_group_median_s": 0.06849299999885261,
+    "metrics": {
+      "legacy": {
+        "iou": 0.787310612059189,
+        "counting": 0.9514997545889994,
+        "warm_compute_median_s": 0.03286069992464036,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06849299999885261,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.325,
+        "min_area": 4,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round2_min_area_12",
+    "selection_proxy_out_of_15": 13.474103869035854,
+    "windows_warm_compute_max_group_median_s": 0.06627519999165088,
+    "metrics": {
+      "legacy": {
+        "iou": 0.787310612059189,
+        "counting": 0.9514997545889994,
+        "warm_compute_median_s": 0.03254050004761666,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06627519999165088,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.325,
+        "min_area": 12,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_foreground_0.375",
+    "selection_proxy_out_of_15": 13.4739500639813,
+    "windows_warm_compute_max_group_median_s": 0.07190750003792346,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7877522689917101,
+        "counting": 0.9514997545889994,
+        "warm_compute_median_s": 0.03259100008290261,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8823727553857328,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07190750003792346,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.375,
+        "boundary": 0.325,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_foreground_0.425",
+    "selection_proxy_out_of_15": 13.466730954621045,
+    "windows_warm_compute_max_group_median_s": 0.06710780004505068,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7860520939733269,
+        "counting": 0.9503469219144277,
+        "warm_compute_median_s": 0.03447579999919981,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8833006672492859,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06710780004505068,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.425,
+        "boundary": 0.325,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_boundary_0.3",
+    "selection_proxy_out_of_15": 13.499633014223424,
+    "windows_warm_compute_max_group_median_s": 0.07687859993893653,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7907806590323518,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.03189039998687804,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07687859993893653,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_boundary_0.35",
+    "selection_proxy_out_of_15": 13.45666206173912,
+    "windows_warm_compute_max_group_median_s": 0.06757920002564788,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7848239656112288,
+        "counting": 0.9493352524244972,
+        "warm_compute_median_s": 0.03365310002118349,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06757920002564788,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.35,
+        "min_area": 8,
+        "min_marker": 24
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_min_marker_22",
+    "selection_proxy_out_of_15": 13.499633014223424,
+    "windows_warm_compute_max_group_median_s": 0.06868290004786104,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7907806590323518,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.033153100055642426,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06868290004786104,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_min_marker_26",
+    "selection_proxy_out_of_15": 13.499633014223424,
+    "windows_warm_compute_max_group_median_s": 0.07646070001646876,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7907806590323518,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.033637500018812716,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07646070001646876,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 26
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_min_area_6",
+    "selection_proxy_out_of_15": 13.499633014223424,
+    "windows_warm_compute_max_group_median_s": 0.07050709996838123,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7907806590323518,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.033073200029321015,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07050709996838123,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 6,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round3_min_area_10",
+    "selection_proxy_out_of_15": 13.499633014223424,
+    "windows_warm_compute_max_group_median_s": 0.06921750004403293,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7907806590323518,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.03474339994136244,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06921750004403293,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 10,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round4_foreground_0.375",
+    "selection_proxy_out_of_15": 13.499511728076445,
+    "windows_warm_compute_max_group_median_s": 0.06777810002677143,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7912309876735596,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.03376549994572997,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8823727553857328,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06777810002677143,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.375,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round4_foreground_0.425",
+    "selection_proxy_out_of_15": 13.49231415197707,
+    "windows_warm_compute_max_group_median_s": 0.07628130004741251,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7895365548580785,
+        "counting": 0.9536846469912831,
+        "warm_compute_median_s": 0.03201439999975264,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8833006672492859,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07628130004741251,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.425,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round4_boundary_0.275",
+    "selection_proxy_out_of_15": 13.466466901263411,
+    "windows_warm_compute_max_group_median_s": 0.0770271000219509,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7872976676043207,
+        "counting": 0.9494761743045496,
+        "warm_compute_median_s": 0.032037700060755014,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.0770271000219509,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.275,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round4_boundary_0.325",
+    "selection_proxy_out_of_15": 13.474103869035854,
+    "windows_warm_compute_max_group_median_s": 0.07530799997039139,
+    "metrics": {
+      "legacy": {
+        "iou": 0.787310612059189,
+        "counting": 0.9514997545889994,
+        "warm_compute_median_s": 0.032241799985058606,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.07530799997039139,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.325,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "round4_min_marker_20",
+    "selection_proxy_out_of_15": 13.49956726727623,
+    "windows_warm_compute_max_group_median_s": 0.06616919999942183,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7907631265131003,
+        "counting": 0.954837479665855,
+        "warm_compute_median_s": 0.03320519998669624,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8828554269994677,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06616919999942183,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 20
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "timing_backend": "CPU"
+  },
+  {
+    "name": "finetune1_epoch1",
+    "selection_proxy_out_of_15": 13.253978662902364,
+    "windows_warm_compute_max_group_median_s": 0.05101499997545034,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7824655914259431,
+        "counting": 0.9409744505854345,
+        "warm_compute_median_s": 0.022092500003054738,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8609542680959195,
+        "counting": 0.95,
+        "warm_compute_median_s": 0.05101499997545034,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 1e-05,
+    "boundary_weight": 1.0,
+    "loss": 0.4261438628522361,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune1_epoch2",
+    "selection_proxy_out_of_15": 13.39250406017203,
+    "windows_warm_compute_max_group_median_s": 0.055811600061133504,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7827565668672972,
+        "counting": 0.939656927528781,
+        "warm_compute_median_s": 0.02246709994506091,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8774923502212252,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.055811600061133504,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 1e-05,
+    "boundary_weight": 1.0,
+    "loss": 0.43834139806468314,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune1_epoch3",
+    "selection_proxy_out_of_15": 13.35051449015332,
+    "windows_warm_compute_max_group_median_s": 0.0523408999433741,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7794553509356986,
+        "counting": 0.9309782873284018,
+        "warm_compute_median_s": 0.021864400012418628,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8782749876815465,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.0523408999433741,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 1e-05,
+    "boundary_weight": 1.0,
+    "loss": 0.39997456495354816,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune2_epoch1",
+    "selection_proxy_out_of_15": 13.116603792184936,
+    "windows_warm_compute_max_group_median_s": 0.05516129999887198,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7808220612859004,
+        "counting": 0.9381143477253316,
+        "warm_compute_median_s": 0.02292189991567284,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8454912689047512,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.05516129999887198,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 3e-06,
+    "boundary_weight": 1.5,
+    "loss": 0.47923825572176676,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune2_epoch2",
+    "selection_proxy_out_of_15": 13.24673334239741,
+    "windows_warm_compute_max_group_median_s": 0.05577819992322475,
+    "metrics": {
+      "legacy": {
+        "iou": 0.782335719109669,
+        "counting": 0.9391448389732142,
+        "warm_compute_median_s": 0.022976299980655313,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8609816665564264,
+        "counting": 0.95,
+        "warm_compute_median_s": 0.05577819992322475,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 3e-06,
+    "boundary_weight": 1.5,
+    "loss": 0.5072076400605644,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune2_epoch3",
+    "selection_proxy_out_of_15": 13.215155130024241,
+    "windows_warm_compute_max_group_median_s": 0.05312439997214824,
+    "metrics": {
+      "legacy": {
+        "iou": 0.777852131570001,
+        "counting": 0.9366454462564302,
+        "warm_compute_median_s": 0.021678099990822375,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8595437901800332,
+        "counting": 0.95,
+        "warm_compute_median_s": 0.05312439997214824,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 3e-06,
+    "boundary_weight": 1.5,
+    "loss": 0.46084991678958986,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune3_epoch1",
+    "selection_proxy_out_of_15": 13.136251959240603,
+    "windows_warm_compute_max_group_median_s": 0.05537749989889562,
+    "metrics": {
+      "legacy": {
+        "iou": 0.78134625065902,
+        "counting": 0.9424621738122881,
+        "warm_compute_median_s": 0.02216149994637817,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8458587646595191,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.05537749989889562,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 1e-06,
+    "boundary_weight": 0.75,
+    "loss": 0.41782302100483965,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune3_epoch2",
+    "selection_proxy_out_of_15": 13.12875787014362,
+    "windows_warm_compute_max_group_median_s": 0.056744499946944416,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7805225110154697,
+        "counting": 0.9408576189468638,
+        "warm_compute_median_s": 0.02261659991927445,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8462886354092989,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.056744499946944416,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 1e-06,
+    "boundary_weight": 0.75,
+    "loss": 0.4432060231522816,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "finetune3_epoch3",
+    "selection_proxy_out_of_15": 13.240168798749899,
+    "windows_warm_compute_max_group_median_s": 0.055698900017887354,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7798569454987845,
+        "counting": 0.941232018584938,
+        "warm_compute_median_s": 0.022225000080652535,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8596227155829169,
+        "counting": 0.95,
+        "warm_compute_median_s": 0.055698900017887354,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "lr": 1e-06,
+    "boundary_weight": 0.75,
+    "loss": 0.40176539159402613,
+    "timing_backend": "CUDA"
+  },
+  {
+    "name": "resolution_384",
+    "selection_proxy_out_of_15": 13.256140589653457,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05241779994685203,
+    "metrics": {
+      "legacy": {
+        "iou": 0.764495178990015,
+        "counting": 0.939555495510353,
+        "warm_compute_median_s": 0.020642499905079603,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.859491577978649,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05241779994685203,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 4,
+        "min_marker": 12
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "resolution_448",
+    "selection_proxy_out_of_15": 13.078976536649833,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.061895100050605834,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7755406676182003,
+        "counting": 0.9399712551392394,
+        "warm_compute_median_s": 0.025086199981160462,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8388818203491827,
+        "counting": 0.9333333333333332,
+        "warm_compute_median_s": 0.061895100050605834,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 6,
+        "min_marker": 17
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 448
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_448.onnx"
+  },
+  {
+    "name": "resolution_576",
+    "selection_proxy_out_of_15": 13.04819465192025,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.08039240003563464,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7834948499503566,
+        "counting": 0.935473696611201,
+        "warm_compute_median_s": 0.04270600003656,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8405500272838424,
+        "counting": 0.9199999999999999,
+        "warm_compute_median_s": 0.08039240003563464,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 10,
+        "min_marker": 28
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 576
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_576.onnx"
+  },
+  {
+    "name": "resolution_640",
+    "selection_proxy_out_of_15": 12.671371935265068,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.08540829992853105,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7719514454453087,
+        "counting": 0.9311867371793766,
+        "warm_compute_median_s": 0.050293699954636395,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8053060981518818,
+        "counting": 0.8705882352941178,
+        "warm_compute_median_s": 0.08540829992853105,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 12,
+        "min_marker": 34
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 640
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_640.onnx"
+  },
+  {
+    "name": "int8_encoder",
+    "selection_proxy_out_of_15": 12.548573025138753,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.07371889997739345,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7402353856443328,
+        "counting": 0.9076114747683783,
+        "warm_compute_median_s": 0.04055869998410344,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8061315873165972,
+        "counting": 0.8923076923076924,
+        "warm_compute_median_s": 0.07371889997739345,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\int8_encoder.onnx"
+  },
+  {
+    "name": "int8_conv_except_head",
+    "selection_proxy_out_of_15": 12.514529826347577,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.07177400006912649,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7384766634327876,
+        "counting": 0.901576707412669,
+        "warm_compute_median_s": 0.038916499936021864,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.804846890539538,
+        "counting": 0.8923076923076924,
+        "warm_compute_median_s": 0.07177400006912649,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.3,
+        "min_area": 8,
+        "min_marker": 22
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 512
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\int8_conv_except_head.onnx"
+  },
+  {
+    "name": "fast_round1_foreground_0.35",
+    "selection_proxy_out_of_15": 13.261050841592688,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.0510750999674201,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7646370956975613,
+        "counting": 0.939555495510353,
+        "warm_compute_median_s": 0.01998109999112785,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.0510750999674201,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.3,
+        "min_area": 4,
+        "min_marker": 12
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_foreground_0.45",
+    "selection_proxy_out_of_15": 13.252999877194807,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05117160000372678,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7637930633251736,
+        "counting": 0.939555495510353,
+        "warm_compute_median_s": 0.02034850011114031,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8593561703211833,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05117160000372678,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.45,
+        "boundary": 0.3,
+        "min_area": 4,
+        "min_marker": 12
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_boundary_0.25",
+    "selection_proxy_out_of_15": 13.277910450997997,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05704480002168566,
+    "metrics": {
+      "legacy": {
+        "iou": 0.766968489374475,
+        "counting": 0.9417199976748551,
+        "warm_compute_median_s": 0.019217299995943904,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05704480002168566,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 12
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_boundary_0.35",
+    "selection_proxy_out_of_15": 13.241947027889093,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.06248500000219792,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7618296840271775,
+        "counting": 0.9372685568597781,
+        "warm_compute_median_s": 0.020227300003170967,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06248500000219792,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.35,
+        "min_area": 4,
+        "min_marker": 12
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_min_marker_10",
+    "selection_proxy_out_of_15": 13.278227024137351,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.06888540007639676,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7670529088783026,
+        "counting": 0.9417199976748551,
+        "warm_compute_median_s": 0.019428899977356195,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06888540007639676,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 10
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_min_marker_14",
+    "selection_proxy_out_of_15": 13.281442668611163,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.050972400000318885,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7681990143599199,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.02089369995519519,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.050972400000318885,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_min_area_2",
+    "selection_proxy_out_of_15": 13.281442668611163,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05129720002878457,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7681990143599199,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.019819900044240057,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05129720002878457,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.25,
+        "min_area": 2,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round1_min_area_6",
+    "selection_proxy_out_of_15": 13.281442668611163,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.04955489991698414,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7681990143599199,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.019540000008419156,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.04955489991698414,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.25,
+        "min_area": 6,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round2_foreground_0.3",
+    "selection_proxy_out_of_15": 13.264200372737378,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05315080005675554,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7668367911761493,
+        "counting": 0.939555495510353,
+        "warm_compute_median_s": 0.02000729995779693,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8592992412815599,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05315080005675554,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.3,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round2_foreground_0.4",
+    "selection_proxy_out_of_15": 13.276661431574937,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05849510000552982,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7680915016265072,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.01955730002373457,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.859491577978649,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05849510000552982,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.4,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round2_boundary_0.2",
+    "selection_proxy_out_of_15": 13.275295359161838,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05132099997717887,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7672590325394003,
+        "counting": 0.9407320966869542,
+        "warm_compute_median_s": 0.019855299964547157,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05132099997717887,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.2,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round2_boundary_0.3",
+    "selection_proxy_out_of_15": 13.261050841592688,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05083199997898191,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7646370956975613,
+        "counting": 0.939555495510353,
+        "warm_compute_median_s": 0.020602199947461486,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05083199997898191,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.3,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round2_min_marker_16",
+    "selection_proxy_out_of_15": 13.280608272426843,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05205790000036359,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7679765087107675,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.01957040000706911,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05205790000036359,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 16
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_foreground_0.325",
+    "selection_proxy_out_of_15": 13.269187519671718,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.06297510000877082,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7670021113143507,
+        "counting": 0.939555495510353,
+        "warm_compute_median_s": 0.020574800088070333,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8604638269925158,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.06297510000877082,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.325,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_foreground_0.375",
+    "selection_proxy_out_of_15": 13.277186007300974,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05788329988718033,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7680918211243627,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.01976749999448657,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.859631145341071,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05788329988718033,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.375,
+        "boundary": 0.25,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_boundary_0.225",
+    "selection_proxy_out_of_15": 13.264637871729263,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.050640600034967065,
+    "metrics": {
+      "legacy": {
+        "iou": 0.765715737189415,
+        "counting": 0.9394333953882529,
+        "warm_compute_median_s": 0.021162100019864738,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.050640600034967065,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.225,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_boundary_0.275",
+    "selection_proxy_out_of_15": 13.291278179080482,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05001210002228618,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7686573149872356,
+        "counting": 0.943595899550757,
+        "warm_compute_median_s": 0.021441299933940172,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05001210002228618,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.275,
+        "min_area": 4,
+        "min_marker": 14
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_min_marker_13",
+    "selection_proxy_out_of_15": 13.291350416911689,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.047850599978119135,
+    "metrics": {
+      "legacy": {
+        "iou": 0.768676578408891,
+        "counting": 0.943595899550757,
+        "warm_compute_median_s": 0.019341500010341406,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.047850599978119135,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.275,
+        "min_area": 4,
+        "min_marker": 13
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_min_marker_15",
+    "selection_proxy_out_of_15": 13.28262103570049,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.04909470002166927,
+    "metrics": {
+      "legacy": {
+        "iou": 0.7685132455837399,
+        "counting": 0.9414313973862549,
+        "warm_compute_median_s": 0.01941059995442629,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.04909470002166927,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.275,
+        "min_area": 4,
+        "min_marker": 15
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_min_area_3",
+    "selection_proxy_out_of_15": 13.291350416911689,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05682970001362264,
+    "metrics": {
+      "legacy": {
+        "iou": 0.768676578408891,
+        "counting": 0.943595899550757,
+        "warm_compute_median_s": 0.01947089994791895,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05682970001362264,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.275,
+        "min_area": 3,
+        "min_marker": 13
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  },
+  {
+    "name": "fast_round3_min_area_5",
+    "selection_proxy_out_of_15": 13.291350416911689,
+    "timing_backend": "CPU",
+    "windows_warm_compute_max_group_median_s": 0.05681059998460114,
+    "metrics": {
+      "legacy": {
+        "iou": 0.768676578408891,
+        "counting": 0.943595899550757,
+        "warm_compute_median_s": 0.019384999992325902,
+        "images": 33
+      },
+      "triangle": {
+        "iou": 0.8606590617882308,
+        "counting": 0.9714285714285715,
+        "warm_compute_median_s": 0.05681059998460114,
+        "images": 5
+      }
+    },
+    "manifest": {
+      "family": "unet",
+      "classes": [
+        "black",
+        "broken",
+        "good",
+        "husk",
+        "immature",
+        "parchment",
+        "shell"
+      ],
+      "classifier": "classifier.onnx",
+      "classifier_size": 96,
+      "classifier_preprocessing": {
+        "mode": "letterbox",
+        "masked": true
+      },
+      "watershed": {
+        "foreground": 0.35,
+        "boundary": 0.275,
+        "min_area": 5,
+        "min_marker": 13
+      },
+      "variants": {
+        "selected": {
+          "file": "model.onnx",
+          "size": 384
+        }
+      }
+    },
+    "onnx": "C:\\DAY3\\runs\\day3_score_latency_search_v1\\resolution_384.onnx"
+  }
+]

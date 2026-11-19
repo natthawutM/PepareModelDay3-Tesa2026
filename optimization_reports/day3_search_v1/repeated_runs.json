@@ -1,0 +1,182 @@
+[
+  {
+    "candidate": "original",
+    "group": "legacy",
+    "repeat": 1,
+    "iou": 0.778549927871196,
+    "counting": 0.9480177293678438,
+    "classification_f1_unmodified": 0.3669501822600243,
+    "cli_seconds_per_image": 0.07666316363523065,
+    "median_per_image_seconds": 0.041419515146337675
+  },
+  {
+    "candidate": "original",
+    "group": "triangle",
+    "repeat": 1,
+    "iou": 0.8493219878603842,
+    "counting": 0.9333333333333333,
+    "classification_f1_unmodified": 0.6349206349206349,
+    "cli_seconds_per_image": 0.40839025999885054,
+    "median_per_image_seconds": 0.2881252999883145
+  },
+  {
+    "candidate": "accuracy",
+    "group": "legacy",
+    "repeat": 1,
+    "iou": 0.7907806590323517,
+    "counting": 0.954837479665855,
+    "classification_f1_unmodified": 0.35108958837772397,
+    "cli_seconds_per_image": 0.07476618181857647,
+    "median_per_image_seconds": 0.04092246967819378
+  },
+  {
+    "candidate": "accuracy",
+    "group": "triangle",
+    "repeat": 1,
+    "iou": 0.8828554269994677,
+    "counting": 0.9714285714285714,
+    "classification_f1_unmodified": 0.5901639344262295,
+    "cli_seconds_per_image": 0.3547454599989578,
+    "median_per_image_seconds": 0.23834867998957635
+  },
+  {
+    "candidate": "speed",
+    "group": "legacy",
+    "repeat": 1,
+    "iou": 0.7686765784088909,
+    "counting": 0.9435958995507571,
+    "classification_f1_unmodified": 0.32563791008505466,
+    "cli_seconds_per_image": 0.062437621213382845,
+    "median_per_image_seconds": 0.029436760603196242
+  },
+  {
+    "candidate": "speed",
+    "group": "triangle",
+    "repeat": 1,
+    "iou": 0.8606590617882308,
+    "counting": 0.9714285714285714,
+    "classification_f1_unmodified": 0.5901639344262295,
+    "cli_seconds_per_image": 0.3378915000008419,
+    "median_per_image_seconds": 0.2220002599991858
+  },
+  {
+    "candidate": "accuracy",
+    "group": "legacy",
+    "repeat": 2,
+    "iou": 0.7907806590323517,
+    "counting": 0.954837479665855,
+    "classification_f1_unmodified": 0.35108958837772397,
+    "cli_seconds_per_image": 0.07544776363735736,
+    "median_per_image_seconds": 0.04329898191093834
+  },
+  {
+    "candidate": "accuracy",
+    "group": "triangle",
+    "repeat": 2,
+    "iou": 0.8828554269994677,
+    "counting": 0.9714285714285714,
+    "classification_f1_unmodified": 0.5901639344262295,
+    "cli_seconds_per_image": 0.3463852400192991,
+    "median_per_image_seconds": 0.22663427996449173
+  },
+  {
+    "candidate": "speed",
+    "group": "legacy",
+    "repeat": 2,
+    "iou": 0.7686765784088909,
+    "counting": 0.9435958995507571,
+    "classification_f1_unmodified": 0.32563791008505466,
+    "cli_seconds_per_image": 0.06071062424488253,
+    "median_per_image_seconds": 0.026964227347916953
+  },
+  {
+    "candidate": "speed",
+    "group": "triangle",
+    "repeat": 2,
+    "iou": 0.8606590617882308,
+    "counting": 0.9714285714285714,
+    "classification_f1_unmodified": 0.5901639344262295,
+    "cli_seconds_per_image": 0.3352625799831003,
+    "median_per_image_seconds": 0.20463004000484944
+  },
+  {
+    "candidate": "original",
+    "group": "legacy",
+    "repeat": 2,
+    "iou": 0.778549927871196,
+    "counting": 0.9480177293678438,
+    "classification_f1_unmodified": 0.3669501822600243,
+    "cli_seconds_per_image": 0.07617335454701926,
+    "median_per_image_seconds": 0.040334184766944614
+  },
+  {
+    "candidate": "original",
+    "group": "triangle",
+    "repeat": 2,
+    "iou": 0.8493219878603842,
+    "counting": 0.9333333333333333,
+    "classification_f1_unmodified": 0.6349206349206349,
+    "cli_seconds_per_image": 0.4005450800061226,
+    "median_per_image_seconds": 0.26126688001677395
+  },
+  {
+    "candidate": "speed",
+    "group": "legacy",
+    "repeat": 3,
+    "iou": 0.7686765784088909,
+    "counting": 0.9435958995507571,
+    "classification_f1_unmodified": 0.32563791008505466,
+    "cli_seconds_per_image": 0.06167164545463906,
+    "median_per_image_seconds": 0.028196693941329915
+  },
+  {
+    "candidate": "speed",
+    "group": "triangle",
+    "repeat": 3,
+    "iou": 0.8606590617882308,
+    "counting": 0.9714285714285714,
+    "classification_f1_unmodified": 0.5901639344262295,
+    "cli_seconds_per_image": 0.34950133999809624,
+    "median_per_image_seconds": 0.20824128005187958
+  },
+  {
+    "candidate": "original",
+    "group": "legacy",
+    "repeat": 3,
+    "iou": 0.778549927871196,
+    "counting": 0.9480177293678438,
+    "classification_f1_unmodified": 0.3669501822600243,
+    "cli_seconds_per_image": 0.07779292727354914,
+    "median_per_image_seconds": 0.04229650598470912
+  },
+  {
+    "candidate": "original",
+    "group": "triangle",
+    "repeat": 3,
+    "iou": 0.8493219878603842,
+    "counting": 0.9333333333333333,
+    "classification_f1_unmodified": 0.6349206349206349,
+    "cli_seconds_per_image": 0.3999836599919945,
+    "median_per_image_seconds": 0.2666840800317004
+  },
+  {
+    "candidate": "accuracy",
+    "group": "legacy",
+    "repeat": 3,
+    "iou": 0.7907806590323517,
+    "counting": 0.954837479665855,
+    "classification_f1_unmodified": 0.35108958837772397,
+    "cli_seconds_per_image": 0.07453579393878693,
+    "median_per_image_seconds": 0.04121528778958953
+  },
+  {
+    "candidate": "accuracy",
+    "group": "triangle",
+    "repeat": 3,
+    "iou": 0.8828554269994677,
+    "counting": 0.9714285714285714,
+    "classification_f1_unmodified": 0.5901639344262295,
+    "cli_seconds_per_image": 0.34901966000907125,
+    "median_per_image_seconds": 0.21921877993736416
+  }
+]

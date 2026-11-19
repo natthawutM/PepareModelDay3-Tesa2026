@@ -22,7 +22,8 @@ class Predictor:
         self.weights = Path(weights)
         self.manifest = json.loads((self.weights / 'manifest.json').read_text())
         self.variant = self.manifest['variants'][variant]
-        self.roi_margin = roi_margin
+        self.roi_margin = self.manifest.get('roi_margin') if roi_margin is None else roi_margin
+        roi_margin = self.roi_margin
         if roi_margin is not None and (self.manifest.get('family') != 'unet' or not 0 <= roi_margin <= 1):
             raise ValueError('ROI margin must be between 0 and 1 for a U-Net model')
         if confidence is not None:
@@ -68,30 +69,41 @@ class Predictor:
         labels, classes, _ = self.predict_instances(image)
         return labels, classes
 
-    def unet_labels(self, image):
+    def unet_labels(self, image, shape=None):
         canvas, box = letterbox(image, self.size)
         logits = self.segmenter.run(None, {'image': normalize(canvas)[None]})[0][0]
-        return instances_from_logits(logits, box, image.shape[:2], self.manifest['watershed'])
+        return instances_from_logits(logits, box, shape or image.shape[:2], self.manifest['watershed'])
 
     def refine_roi(self, image, labels):
         mask = labels > 0
         x, y, w, h = cv2.boundingRect(mask.astype(np.uint8))
+        h_img, w_img = image.shape[:2]
+        def restore():
+            return labels if labels.shape == (h_img, w_img) else cv2.resize(
+                labels, (w_img, h_img), interpolation=cv2.INTER_NEAREST)
         if not w or not h:
-            return labels
-        h_img, w_img = labels.shape
+            return restore()
+        sy, sx = h_img / labels.shape[0], w_img / labels.shape[1]
+        x, y, w, h = int(np.floor(x*sx)), int(np.floor(y*sy)), int(np.ceil(w*sx)), int(np.ceil(h*sy))
         margin = max(4, int(round(max(w, h) * self.roi_margin)))
         x1, y1 = max(0, x - margin), max(0, y - margin)
         x2, y2 = min(w_img, x + w + margin), min(h_img, y + h + margin)
         # Skip when cropping would barely improve the effective resolution.
         if max(x2 - x1, y2 - y1) > .85 * max(h_img, w_img):
-            return labels
+            return restore()
         roi = np.s_[y1:y2, x1:x2]
         refined = self.unet_labels(image[roi])
-        baseline = mask[roi]
+        # Compare at locator resolution rather than allocating a full-resolution
+        # first-pass mask just to find the crop. This option is opt-in in manifest.
+        lx1, ly1 = int(x1 / sx), int(y1 / sy)
+        lx2, ly2 = int(np.ceil(x2 / sx)), int(np.ceil(y2 / sy))
+        baseline = mask[ly1:ly2, lx1:lx2]
+        check = cv2.resize((refined > 0).astype(np.uint8), (baseline.shape[1], baseline.shape[0]),
+                           interpolation=cv2.INTER_NEAREST).astype(bool)
         # Keep the full-image prediction if the zoom loses much of its foreground.
-        if np.count_nonzero(baseline & (refined > 0)) < .8 * np.count_nonzero(baseline):
-            return labels
-        result = np.zeros_like(labels)
+        if np.count_nonzero(baseline & check) < .8 * np.count_nonzero(baseline):
+            return restore()
+        result = np.zeros((h_img, w_img), dtype=np.uint16)
         result[roi] = refined
         return result
 
@@ -110,7 +122,12 @@ class Predictor:
                         labels[visible] = len(classes)
             regions = [(i, box, labels[box] == i) for i, box in enumerate(find_objects(labels), 1) if box is not None]
             return labels, classes, regions
-        labels = self.unet_labels(image)
+        locator = self.manifest.get('roi_locator_side', 0) if self.roi_margin is not None else 0
+        shape = None
+        if locator and max(image.shape[:2]) > locator:
+            scale = locator / max(image.shape[:2])
+            shape = (max(1, round(image.shape[0]*scale)), max(1, round(image.shape[1]*scale)))
+        labels = self.unet_labels(image, shape)
         if self.roi_margin is not None:
             labels = self.refine_roi(image, labels)
         classes = []

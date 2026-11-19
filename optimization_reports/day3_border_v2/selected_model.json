@@ -1,0 +1,39 @@
+{
+  "manifest": {
+    "family": "unet",
+    "classes": [
+      "black",
+      "broken",
+      "good",
+      "husk",
+      "immature",
+      "parchment",
+      "shell"
+    ],
+    "classifier": "classifier.onnx",
+    "classifier_size": 96,
+    "classifier_preprocessing": {
+      "mode": "letterbox",
+      "masked": true
+    },
+    "watershed": {
+      "foreground": 0.4,
+      "boundary": 0.3,
+      "min_area": 8,
+      "min_marker": 22,
+      "border_strip_span": 0.7,
+      "border_strip_depth": 0.2
+    },
+    "variants": {
+      "selected": {
+        "file": "model.onnx",
+        "size": 512
+      }
+    }
+  },
+  "sha256": {
+    "classifier.onnx": "cb003637e9d18e650c92aa574a935405a0ef6a4fdefb64a22ca0b2e0ef0efb6c",
+    "manifest.json": "19751b76b1ab9c0034f96942f8db2c7486958dcae2097d71e18315aa7dec8a64",
+    "model.onnx": "6fde18cc2cef1fadec76ee6ab03ed9f05e4e0dab47d7de8eff3591db246dba24"
+  }
+}
