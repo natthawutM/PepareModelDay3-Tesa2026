@@ -67,6 +67,19 @@ python benchmark_all.py --split test --model yolo_640_int8 --confidence 0.175
 
 ### รายการรุ่นและคำสั่งทั่วไป
 
+`A0_classifier_refined` ใช้ตัวแยกเมล็ด A0 และ watershed `0.425/20` พร้อม classifier ที่ fine-tune จากภาพเมล็ดใน Train สำหรับเทียบความถูกต้องของคลาสกับ A0 เดิม ใช้ไฟล์ watershed ของ A0 รอบ refine เพื่อให้ทั้งคู่ใช้พารามิเตอร์เดียวกัน
+
+`A0_classifier_day3` ต่อจาก `A0_classifier_refined` โดยเพิ่มภาพ grid และ square ของ Day 3 เข้า Train และใช้ภาพ triangle 5 ภาพสำหรับวัดผล บน Windows ชุด triangle ได้ Class-aware F1 63.49% เทียบกับ 38.10% ของรุ่นก่อน ส่วน Valid เดิม 33 ภาพได้ 36.70% เทียบกับ 41.80% ของรุ่นก่อน ผลชุด triangle ใช้เทียบระหว่างทดลอง โดยยังไม่มีข้อมูลยืนยันว่าเมล็ดจริงถูกใช้ข้ามรูปแบบการจัดวางหรือไม่
+
+```bash
+python benchmark_all.py --model A0_classifier_refined A0_classifier_day3 --data-root /path/to/day3_classifier_split_v1 --out outputs_day3_classifiers
+```
+
+```bash
+python benchmark_all.py --model A0_classifier_refined --out outputs_a0_classifier
+python benchmark_all.py --model A0 --watershed outputs_day3_refine/A0/boundary_0.425_marker_20/watershed.json --out outputs_a0_class_baseline
+```
+
 `models/` มี **37 ชุดรัน** รวม 29 แบบที่ผ่านการ optimize และไฟล์ ONNX จาก checkpoint ของ 7 รอบเทรนหลัก พร้อม A0 ที่ใช้ classifier อีกแบบ
 
 | ชื่อในคำสั่ง | ที่มา |
