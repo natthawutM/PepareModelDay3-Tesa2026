@@ -1,0 +1,9 @@
+ultralytics==8.4.211
+onnxruntime
+numpy
+opencv-python
+Pillow
+scipy
+scikit-image
+pycocotools
+ncnn

@@ -1,0 +1,12 @@
+{
+  "family": "yolo",
+  "settings": {
+    "conf": 0.35
+  },
+  "variants": {
+    "selected": {
+      "file": "model.onnx",
+      "size": 640
+    }
+  }
+}

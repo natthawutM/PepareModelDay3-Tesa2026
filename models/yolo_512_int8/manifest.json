@@ -1,0 +1,12 @@
+{
+  "family": "yolo",
+  "settings": {
+    "conf": 0.35
+  },
+  "variants": {
+    "selected": {
+      "file": "yolo_512_int8.onnx",
+      "size": 512
+    }
+  }
+}
