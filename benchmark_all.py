@@ -4,6 +4,7 @@ import csv
 import json
 import subprocess
 from pathlib import Path
+from statistics import mean
 
 from run_test import ROOT, run
 
@@ -58,6 +59,8 @@ def main():
     sweeps = parser.add_mutually_exclusive_group()
     sweeps.add_argument("--day3-tune", action="store_true", help="Sweep the four Day 3 finalists on Valid")
     sweeps.add_argument("--day3-refine", action="store_true", help="Refine A0 and compare YOLO INT8 on Valid")
+    sweeps.add_argument("--compare-roi", nargs="+", type=float,
+                        help="Compare full-frame inference with these crop margins for one U-Net model")
     parser.add_argument("--confidence", nargs="+", type=float, help="Evaluate each of these YOLO thresholds")
     parser.add_argument("--watershed", type=Path, help="Reuse a watershed.json with one U-Net model")
     args = parser.parse_args()
@@ -86,6 +89,12 @@ def main():
             parser.error("--watershed requires a JSON file and one U-Net model")
         if json.loads((models[names[0]] / "manifest.json").read_text(encoding="utf-8"))["family"] != "unet":
             parser.error("--watershed applies only to U-Net models")
+    if args.compare_roi is not None:
+        if not args.model or len(names) != 1 or args.confidence is not None:
+            parser.error("--compare-roi requires one model and cannot be combined with --confidence")
+        if (json.loads((models[names[0]] / "manifest.json").read_text(encoding="utf-8"))["family"] != "unet"
+                or any(not 0 <= margin <= 1 for margin in args.compare_roi)):
+            parser.error("--compare-roi requires a U-Net model and margins between 0 and 1")
     thresholds = list(dict.fromkeys(args.confidence)) if args.confidence is not None else [None]
     if args.day3_refine:
         trials = list(day3_refinement_trials())
@@ -97,6 +106,12 @@ def main():
         trials = [(name, f"conf_{c}" if c is not None else "", c, None)
                   for name in names for c in thresholds]
         default_out = f"outputs_all_{args.split}"
+    if args.compare_roi is not None:
+        trials = [(names[0], "full_frame", None, None)] + [
+            (names[0], f"roi_margin_{margin}", None, None)
+            for margin in dict.fromkeys(args.compare_roi)
+        ]
+        default_out = f"outputs_roi_{args.split}"
     if any(name not in models for name, *_ in trials):
         parser.error("Missing model folders required for this benchmark")
     out = (args.out or ROOT / default_out).resolve()
@@ -104,10 +119,12 @@ def main():
     rows = []
     class_rows = []
     for i, (name, label, confidence, settings) in enumerate(trials, 1):
+        margin = float(label.removeprefix("roi_margin_")) if label.startswith("roi_margin_") else None
         weights = models[name]
         target = out / name / label
         target.mkdir(parents=True, exist_ok=True)
-        row = {"model": name, "trial": label, "split": args.split, "confidence_override": confidence}
+        row = {"model": name, "trial": label, "split": args.split,
+               "confidence_override": confidence, "roi_margin": margin}
         print(f"[{i}/{len(trials)}] {name} {label}".rstrip(), flush=True)
         try:
             cfg = json.loads((weights / "manifest.json").read_text(encoding="utf-8"))
@@ -122,11 +139,17 @@ def main():
                 watershed.write_text(json.dumps(settings, indent=2), encoding="utf-8")
             with (target / "infer.log").open("w", encoding="utf-8") as log:
                 report = run(weights, target, args.split, args.threads, log, confidence,
-                             data_root=data_root, watershed=watershed)
+                             data_root=data_root, watershed=watershed, roi_margin=margin)
             row.update({key: report[key] for key in METRICS}, status="ok")
             row["day3_performance_out_of_30"] = 15 * (report["instance_iou"] + report["matched_counting"])
             row["under_1s_both"] = max(report["median_seconds_per_image"],
                                        report["end_to_end_seconds_per_image"]) <= 1
+            if args.compare_roi is not None:
+                piles = [r for r in report["rows"] if "_pile_" in r["filename"].lower()]
+                row["pile_images"] = len(piles)
+                if piles:
+                    row["pile_instance_iou"] = mean(r["instance_iou"] for r in piles)
+                    row["pile_matched_counting"] = mean(r["counting"] for r in piles)
             class_rows.extend(
                 {"model": name, "trial": label, "class": category, **values}
                 for category, values in report["per_class"].items()
@@ -141,7 +164,8 @@ def main():
         with tmp.open("w", newline="", encoding="utf-8") as handle:
             writer = csv.DictWriter(handle, fieldnames=("model", "trial", "split", "status", "model_bytes",
                                                        *METRICS, "day3_performance_out_of_30", "under_1s_both",
-                                                       "confidence_override", "error"))
+                                                       "confidence_override", "roi_margin", "pile_images",
+                                                       "pile_instance_iou", "pile_matched_counting", "error"))
             writer.writeheader()
             writer.writerows(rows)
         tmp.replace(out / "comparison.csv")

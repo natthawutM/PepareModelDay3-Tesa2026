@@ -36,6 +36,14 @@ python run_test.py
 
 ### จูน 4 รุ่นตามเกณฑ์ Day 3
 
+เทียบ A0 บนภาพเต็มกับการ crop อัตโนมัติจากบริเวณเมล็ดที่โมเดลพบ โดยใช้ checkpoint และค่า watershed เดียวกัน ระยะขอบในตัวอย่างเป็นสัดส่วนของด้านยาวของกรอบก่อน crop ระบบคืน mask ไปยังพิกัดภาพเต็ม
+
+```bash
+python benchmark_all.py --split valid --model A0_classifier_day3 --compare-roi 0.15 0.30 0.50
+```
+
+`outputs_roi_valid/comparison.csv` เก็บ IoU, Counting, คะแนน `15 × IoU + 15 × Counting`, เวลา และผลเฉพาะไฟล์ชื่อที่มี `_pile_` ใช้ `--data-root` เพื่อเทียบกับชุด COCO อื่นที่มีโฟลเดอร์ `valid/`
+
 หลังรอบแรก ใช้ `--day3-refine` เพื่อเทียบ U-Net A0 ที่ `boundary` เท่ากับ 0.425, 0.45 และ 0.475 กับ `min_marker` เท่ากับ 16, 20 และ 24 ครบ 9 คู่ และรัน YOLO INT8 `conf=0.20` เป็นตัวเทียบด้านคลาส ค่า A0 `0.45/16` คือค่าที่ทำได้ 25.73/30 บน Pi รอบก่อน
 
 ```bash

@@ -90,13 +90,15 @@ def evaluate(output, split="test", data_root=ROOT):
 
 
 def run(weights, output, split="test", threads=4, log=None, confidence=None,
-        *, data_root=ROOT, watershed=None):
+        *, data_root=ROOT, watershed=None, roi_margin=None):
     cmd = [sys.executable, str(ROOT / "infer.py"), "--input", str(data_root / split),
            "--weights", str(weights), "--out", str(output), "--threads", str(threads)]
     if confidence is not None:
         cmd.extend(("--confidence", str(confidence)))
     if watershed is not None:
         cmd.extend(("--watershed", str(watershed)))
+    if roi_margin is not None:
+        cmd.extend(("--roi-margin", str(roi_margin)))
     env = dict(os.environ, YOLO_OFFLINE="true", YOLO_AUTOINSTALL="false",
                OMP_NUM_THREADS=str(threads), MKL_NUM_THREADS=str(threads))
     start = perf_counter()

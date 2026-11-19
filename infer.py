@@ -18,10 +18,13 @@ IMAGE_TYPES = {'.jpg', '.jpeg', '.png'}
 
 
 class Predictor:
-    def __init__(self, weights, variant, threads, confidence=None, watershed=None):
+    def __init__(self, weights, variant, threads, confidence=None, watershed=None, roi_margin=None):
         self.weights = Path(weights)
         self.manifest = json.loads((self.weights / 'manifest.json').read_text())
         self.variant = self.manifest['variants'][variant]
+        self.roi_margin = roi_margin
+        if roi_margin is not None and (self.manifest.get('family') != 'unet' or not 0 <= roi_margin <= 1):
+            raise ValueError('ROI margin must be between 0 and 1 for a U-Net model')
         if confidence is not None:
             if self.manifest.get('family') != 'yolo' or not 0 <= confidence <= 1:
                 raise ValueError('Confidence must be between 0 and 1 for a YOLO model')
@@ -65,6 +68,33 @@ class Predictor:
         labels, classes, _ = self.predict_instances(image)
         return labels, classes
 
+    def unet_labels(self, image):
+        canvas, box = letterbox(image, self.size)
+        logits = self.segmenter.run(None, {'image': normalize(canvas)[None]})[0][0]
+        return instances_from_logits(logits, box, image.shape[:2], self.manifest['watershed'])
+
+    def refine_roi(self, image, labels):
+        mask = labels > 0
+        x, y, w, h = cv2.boundingRect(mask.astype(np.uint8))
+        if not w or not h:
+            return labels
+        h_img, w_img = labels.shape
+        margin = max(4, int(round(max(w, h) * self.roi_margin)))
+        x1, y1 = max(0, x - margin), max(0, y - margin)
+        x2, y2 = min(w_img, x + w + margin), min(h_img, y + h + margin)
+        # Skip when cropping would barely improve the effective resolution.
+        if max(x2 - x1, y2 - y1) > .85 * max(h_img, w_img):
+            return labels
+        roi = np.s_[y1:y2, x1:x2]
+        refined = self.unet_labels(image[roi])
+        baseline = mask[roi]
+        # Keep the full-image prediction if the zoom loses much of its foreground.
+        if np.count_nonzero(baseline & (refined > 0)) < .8 * np.count_nonzero(baseline):
+            return labels
+        result = np.zeros_like(labels)
+        result[roi] = refined
+        return result
+
     def predict_instances(self, image):
         if self.manifest.get('family') == 'yolo':
             result = self.yolo.predict(cv2.cvtColor(image, cv2.COLOR_RGB2BGR), imgsz=self.size,
@@ -80,9 +110,9 @@ class Predictor:
                         labels[visible] = len(classes)
             regions = [(i, box, labels[box] == i) for i, box in enumerate(find_objects(labels), 1) if box is not None]
             return labels, classes, regions
-        canvas, box = letterbox(image, self.size)
-        logits = self.segmenter.run(None, {'image': normalize(canvas)[None]})[0][0]
-        labels = instances_from_logits(logits, box, image.shape[:2], self.manifest['watershed'])
+        labels = self.unet_labels(image)
+        if self.roi_margin is not None:
+            labels = self.refine_roi(image, labels)
         classes = []
         regions = [(i, box, labels[box] == i) for i, box in enumerate(find_objects(labels), 1) if box is not None]
         for start in range(0, len(regions), 16):
@@ -222,7 +252,8 @@ def main(args):
     for folder in ('seg_mask', 'vis'):
         (args.out / folder).mkdir(parents=True, exist_ok=True)
     watershed = json.loads(args.watershed.read_text(encoding='utf-8')) if args.watershed else None
-    predictor = Predictor(args.weights, args.variant, args.threads, args.confidence, watershed)
+    predictor = Predictor(args.weights, args.variant, args.threads, args.confidence, watershed,
+                          args.roi_margin)
     for i in range(args.warmup):
         run_one(predictor, files[i % len(files)], args.out, vis_max_side)
     rows, seconds = [], []
@@ -257,6 +288,7 @@ if __name__ == '__main__':
     parser.add_argument('--threads', type=int, default=4)
     parser.add_argument('--confidence', type=float, help='Override the YOLO confidence threshold')
     parser.add_argument('--watershed', type=Path, help='JSON file overriding U-Net watershed parameters')
+    parser.add_argument('--roi-margin', type=float, help='Optional U-Net crop margin as a fraction of the detected long side')
     parser.add_argument('--warmup', type=int, default=0)
     parser.add_argument('--vis-max-side', type=int, default=1280, help='Limit overlay size only (0 for full resolution)')
     main(parser.parse_args())
