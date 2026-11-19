@@ -29,6 +29,8 @@ def evaluate(output, split="test", data_root=ROOT):
     pred_by_class = dict.fromkeys(dataset.classes, 0)
     correct = matched = total = 0
     for index, image in enumerate(dataset.images):
+        image_gt = dict.fromkeys(dataset.classes, 0)
+        image_pred = dict.fromkeys(dataset.classes, 0)
         _, gt = dataset.load(index)
         name = image["file_name"]
         objects = by_name[name]
@@ -42,9 +44,12 @@ def evaluate(output, split="test", data_root=ROOT):
         scores = match(labels, gt)
         for _, category, mask in gt:
             if mask.any():
-                gt_by_class[dataset.names[category]] += 1
+                category_name = dataset.names[category]
+                gt_by_class[category_name] += 1
+                image_gt[category_name] += 1
         for obj in objects:
             pred_by_class[obj["class"]] += 1
+            image_pred[obj["class"]] += 1
         for _, category, predicted_id, iou in scores["pairs"]:
             if iou >= .5:
                 matched += 1
@@ -53,7 +58,14 @@ def evaluate(output, split="test", data_root=ROOT):
                 confusion[expected][predicted] += 1
                 correct += int(predicted == expected)
         total += scores["gt"] + scores["predicted"]
-        rows.append({"filename": name, **{k: v for k, v in scores.items() if k != "pairs"}})
+        rows.append({
+            "filename": name, **{k: v for k, v in scores.items() if k != "pairs"},
+            "class_counts": {
+                category: {"gt": image_gt[category], "predicted": image_pred[category],
+                           "count_error": abs(image_pred[category] - image_gt[category])}
+                for category in dataset.classes
+            },
+        })
     return {
         "images": len(rows), "gt_instances": sum(r["gt"] for r in rows),
         "instance_iou": mean(r["instance_iou"] for r in rows),
@@ -66,6 +78,7 @@ def evaluate(output, split="test", data_root=ROOT):
             name: {
                 "gt": gt_by_class[name],
                 "predicted": pred_by_class[name],
+                "count_mae": mean(row["class_counts"][name]["count_error"] for row in rows),
                 "correct_at_iou_50": confusion[name][name],
                 "f1_at_iou_50": 2 * confusion[name][name] / (gt_by_class[name] + pred_by_class[name])
                 if gt_by_class[name] + pred_by_class[name] else None,

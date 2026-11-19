@@ -36,6 +36,14 @@ python run_test.py
 
 ### จูน 4 รุ่นตามเกณฑ์ Day 3
 
+หลังรอบแรก ใช้ `--day3-refine` เพื่อเทียบ U-Net A0 ที่ `boundary` เท่ากับ 0.425, 0.45 และ 0.475 กับ `min_marker` เท่ากับ 16, 20 และ 24 ครบ 9 คู่ และรัน YOLO INT8 `conf=0.20` เป็นตัวเทียบด้านคลาส ค่า A0 `0.45/16` คือค่าที่ทำได้ 25.73/30 บน Pi รอบก่อน
+
+```bash
+python benchmark_all.py --day3-refine
+```
+
+ดู `outputs_day3_refine/comparison.csv` สำหรับคะแนนรวม และ `outputs_day3_refine/per_class_counts.csv` สำหรับ `count_mae` ของทั้ง 7 คลาส หน่วยเป็นเมล็ดต่อภาพ คำนวณจากค่าเฉลี่ยของผลต่างสัมบูรณ์ระหว่างจำนวนทายกับจำนวนจริงของคลาสนั้นในแต่ละภาพ `metrics.json` เก็บจำนวนรายคลาสแยกรายภาพ และแต่ละรอบ A0 มี `watershed.json` สำหรับใช้กับ `--watershed` อีกครั้ง
+
 คำสั่งนี้รัน 17 ค่าเทียบกันบน Valid ได้แก่ U-Net A0 ที่ปรับ watershed 9 แบบ รวมค่าเดิม และ YOLO 640 FP32, NCNN และ INT8 ที่ลอง confidence รวม 8 แบบ
 
 ```bash

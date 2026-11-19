@@ -37,6 +37,15 @@ def day3_trials():
             yield name, f"conf_{confidence}", confidence, None
 
 
+def day3_refinement_trials():
+    for boundary in (0.45, 0.425, 0.475):
+        for marker in (16, 20, 24):
+            yield "A0", f"boundary_{boundary}_marker_{marker}", None, {
+                "boundary": boundary, "min_marker": marker,
+            }
+    yield "yolo_640_int8", "conf_0.2", 0.20, None
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--split", choices=("valid", "test"), default="valid")
@@ -46,7 +55,9 @@ def main():
     parser.add_argument("--threads", type=int, default=4)
     parser.add_argument("--data-root", type=Path, default=ROOT,
                         help="COCO dataset directory containing valid/ and optionally test/")
-    parser.add_argument("--day3-tune", action="store_true", help="Sweep the four Day 3 finalists on Valid")
+    sweeps = parser.add_mutually_exclusive_group()
+    sweeps.add_argument("--day3-tune", action="store_true", help="Sweep the four Day 3 finalists on Valid")
+    sweeps.add_argument("--day3-refine", action="store_true", help="Refine A0 and compare YOLO INT8 on Valid")
     parser.add_argument("--confidence", nargs="+", type=float, help="Evaluate each of these YOLO thresholds")
     parser.add_argument("--watershed", type=Path, help="Reuse a watershed.json with one U-Net model")
     args = parser.parse_args()
@@ -54,8 +65,10 @@ def main():
     if args.list:
         print("\n".join(models))
         return
-    if args.day3_tune and (args.split != "valid" or args.model or args.confidence is not None or args.watershed):
-        parser.error("--day3-tune runs its four fixed candidates on Valid")
+    if (args.day3_tune or args.day3_refine) and (
+        args.split != "valid" or args.model or args.confidence is not None or args.watershed
+    ):
+        parser.error("Day 3 sweeps use their preset candidates on Valid")
     data_root = args.data_root.resolve()
     if not (data_root / args.split / "_annotations.coco.json").is_file():
         parser.error(f"Missing COCO annotations in {data_root / args.split}")
@@ -74,15 +87,22 @@ def main():
         if json.loads((models[names[0]] / "manifest.json").read_text(encoding="utf-8"))["family"] != "unet":
             parser.error("--watershed applies only to U-Net models")
     thresholds = list(dict.fromkeys(args.confidence)) if args.confidence is not None else [None]
-    trials = (list(day3_trials()) if args.day3_tune else
-              [(name, f"conf_{c}" if c is not None else "", c, None)
-               for name in names for c in thresholds])
+    if args.day3_refine:
+        trials = list(day3_refinement_trials())
+        default_out = "outputs_day3_refine"
+    elif args.day3_tune:
+        trials = list(day3_trials())
+        default_out = "outputs_day3_tune"
+    else:
+        trials = [(name, f"conf_{c}" if c is not None else "", c, None)
+                  for name in names for c in thresholds]
+        default_out = f"outputs_all_{args.split}"
     if any(name not in models for name, *_ in trials):
         parser.error("Missing model folders required for this benchmark")
-    default_out = "outputs_day3_tune" if args.day3_tune else f"outputs_all_{args.split}"
     out = (args.out or ROOT / default_out).resolve()
     out.mkdir(parents=True, exist_ok=True)
     rows = []
+    class_rows = []
     for i, (name, label, confidence, settings) in enumerate(trials, 1):
         weights = models[name]
         target = out / name / label
@@ -107,6 +127,10 @@ def main():
             row["day3_performance_out_of_30"] = 15 * (report["instance_iou"] + report["matched_counting"])
             row["under_1s_both"] = max(report["median_seconds_per_image"],
                                        report["end_to_end_seconds_per_image"]) <= 1
+            class_rows.extend(
+                {"model": name, "trial": label, "class": category, **values}
+                for category, values in report["per_class"].items()
+            )
             print(f"  IoU {row['instance_iou']:.2%} | Count {row['matched_counting']:.2%} | "
                   f"F1 {row['class_aware_f1_at_iou_50']:.2%} | {row['end_to_end_seconds_per_image']:.3f} s/image", flush=True)
         except (OSError, ValueError, KeyError, subprocess.CalledProcessError) as error:
@@ -122,7 +146,12 @@ def main():
             writer.writerows(rows)
         tmp.replace(out / "comparison.csv")
     print(out / "comparison.csv")
-    if args.day3_tune:
+    if class_rows:
+        with (out / "per_class_counts.csv").open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(class_rows[0]))
+            writer.writeheader()
+            writer.writerows(class_rows)
+    if args.day3_tune or args.day3_refine:
         ranking = sorted((r for r in rows if r["status"] == "ok"),
                          key=lambda r: (not r["under_1s_both"], -r["day3_performance_out_of_30"],
                                         r["end_to_end_seconds_per_image"]))
